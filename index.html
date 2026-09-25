@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Lyra — private concierge, worldwide. One request, one person, everything arranged.">
 <meta name="theme-color" content="#43030A">
+<meta name="robots" content="noindex, nofollow">
 <title>Lyra Conciergerie</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -98,6 +99,21 @@
     padding-bottom: 4px;
     border-bottom: 1px solid currentColor;
   }
+  .header-actions { display: flex; align-items: center; gap: clamp(18px, 3vw, 36px); }
+  .lang-switch { display: flex; align-items: center; gap: 6px; font-size: 10.5px; letter-spacing: .2em; }
+  .lang-switch span { opacity: .4; }
+  .lang-switch button {
+    font: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    background: none;
+    border: 0;
+    padding: 6px 2px;
+    cursor: pointer;
+    opacity: .5;
+    transition: opacity .3s ease;
+  }
+  .lang-switch button:hover, .lang-switch button[aria-pressed="true"] { opacity: 1; }
   .header-cta .short { display: none; }
   @media (max-width: 640px) {
     .site-header { height: 54px; }
@@ -329,57 +345,64 @@
 <body>
 
 <header class="site-header" id="header">
-  <a class="brand" href="#top" aria-label="Lyra — back to top">
+  <a class="brand" href="#top" data-i18n-attr="aria-label:brandLabel" aria-label="Lyra — back to top">
     <img class="mark-light" src="assets/brand/lyra-mark.png" alt="">
     <img class="mark-dark" src="assets/brand/lyra-mark-bordeaux.png" alt="">
     <span>Lyra</span>
   </a>
-  <a class="header-cta" href="#request"><span class="long">Request Lyra</span><span class="short">Request</span></a>
+  <nav class="header-actions" aria-label="Language and request">
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="en" lang="en" aria-pressed="true">EN</button>
+      <span aria-hidden="true">/</span>
+      <button type="button" data-lang="fr" lang="fr" aria-pressed="false">FR</button>
+    </div>
+    <a class="header-cta" href="#request"><span class="long" data-i18n="ctaLong">Request Lyra</span><span class="short" data-i18n="ctaShort">Request</span></a>
+  </nav>
 </header>
 
 <main id="top">
   <section class="hero on-dark">
-    <img src="assets/lyra/hero.jpg" alt="A villa lit at night on a cliff above the sea" fetchpriority="high">
+    <img src="assets/lyra/hero.jpg" data-i18n-attr="alt:altHero" alt="A villa lit at night on a cliff above the sea" fetchpriority="high">
     <div class="hero-content">
-      <span class="label">Private concierge · Worldwide</span>
-      <h1>Life, <em>exceptionally</em> arranged.</h1>
-      <a class="link-cta" href="#request">Request Lyra</a>
+      <span class="label" data-i18n="heroLabel">Private concierge · Worldwide</span>
+      <h1 data-i18n-html="heroTitle">Life, <em>exceptionally</em> arranged.</h1>
+      <a class="link-cta" href="#request" data-i18n="ctaLong">Request Lyra</a>
     </div>
   </section>
 
   <section class="section promise">
     <div class="narrow reveal">
-      <span class="label">The service</span>
-      <h2>One request.<br>Nothing else to think about.</h2>
-      <p>Tell us what you wish for, where, and the budget you have in mind. One person takes it from there — and quietly takes care of everything.</p>
+      <span class="label" data-i18n="promiseLabel">The service</span>
+      <h2 data-i18n-html="promiseTitle">One request.<br>Nothing else to think about.</h2>
+      <p data-i18n="promiseText">Tell us what you wish for, where, and the budget you have in mind. One person takes it from there — and quietly takes care of everything.</p>
     </div>
   </section>
 
   <section class="section" id="worlds" style="padding-top: 0;">
     <div class="worlds-head reveal">
-      <span class="label">Our worlds</span>
-      <h2>Five worlds, one hand.</h2>
+      <span class="label" data-i18n="worldsLabel">Our worlds</span>
+      <h2 data-i18n="worldsTitle">Five worlds, one hand.</h2>
     </div>
     <div class="worlds-grid">
       <figure class="world w-travel reveal">
-        <div class="frame"><img src="assets/lyra/travel.jpg" loading="lazy" alt="The cabin of a private jet"></div>
-        <figcaption><h3>Travel</h3><p>Private aviation, yachts, villas and hotels.</p></figcaption>
+        <div class="frame"><img src="assets/lyra/travel.jpg" loading="lazy" data-i18n-attr="alt:altTravel" alt="The cabin of a private jet"></div>
+        <figcaption><h3 data-i18n="travelTitle">Travel</h3><p data-i18n="travelText">Private aviation, yachts, villas and hotels.</p></figcaption>
       </figure>
       <figure class="world w-dining reveal">
-        <div class="frame"><img src="assets/lyra/dining.jpg" loading="lazy" alt="A candlelit table set for dinner"></div>
-        <figcaption><h3>Dining</h3><p>The right table, a private chef, a rare bottle.</p></figcaption>
+        <div class="frame"><img src="assets/lyra/dining.jpg" loading="lazy" data-i18n-attr="alt:altDining" alt="A candlelit table set for dinner"></div>
+        <figcaption><h3 data-i18n="diningTitle">Dining</h3><p data-i18n="diningText">The right table, a private chef, a rare bottle.</p></figcaption>
       </figure>
       <figure class="world w-experiences reveal">
-        <div class="frame"><img src="assets/lyra/experiences.jpg" loading="lazy" alt="The red velvet boxes of an opera house"></div>
-        <figcaption><h3>Experiences</h3><p>Premieres, private events, nights to remember.</p></figcaption>
+        <div class="frame"><img src="assets/lyra/experiences.jpg" loading="lazy" data-i18n-attr="alt:altExperiences" alt="The red velvet boxes of an opera house"></div>
+        <figcaption><h3 data-i18n="experiencesTitle">Experiences</h3><p data-i18n="experiencesText">Premieres, private events, nights to remember.</p></figcaption>
       </figure>
       <figure class="world w-mobility reveal">
-        <div class="frame"><img src="assets/lyra/mobility.jpg" loading="lazy" alt="The mascot on the bonnet of a grand car"></div>
-        <figcaption><h3>Mobility</h3><p>A driver waiting, in any city, at any hour.</p></figcaption>
+        <div class="frame"><img src="assets/lyra/mobility.jpg" loading="lazy" data-i18n-attr="alt:altMobility" alt="The mascot on the bonnet of a grand car"></div>
+        <figcaption><h3 data-i18n="mobilityTitle">Mobility</h3><p data-i18n="mobilityText">A driver waiting, in any city, at any hour.</p></figcaption>
       </figure>
       <figure class="world w-private reveal">
-        <div class="frame"><img src="assets/lyra/private.jpg" loading="lazy" alt="Morning light across an unmade bed"></div>
-        <figcaption><h3>Private Life</h3><p>Home, wellbeing, the everyday — handled.</p></figcaption>
+        <div class="frame"><img src="assets/lyra/private.jpg" loading="lazy" data-i18n-attr="alt:altPrivate" alt="Morning light across an unmade bed"></div>
+        <figcaption><h3 data-i18n="privateTitle">Private Life</h3><p data-i18n="privateText">Home, wellbeing, the everyday — handled.</p></figcaption>
       </figure>
     </div>
   </section>
@@ -387,54 +410,54 @@
   <section class="section difference on-dark" id="difference">
     <div class="inner">
       <div class="reveal">
-        <span class="label">The Lyra difference</span>
-        <h2>Not a service. A person.</h2>
+        <span class="label" data-i18n="differenceLabel">The Lyra difference</span>
+        <h2 data-i18n="differenceTitle">Not a service. A person.</h2>
       </div>
       <ul class="pillars reveal">
-        <li class="pillar"><h3>Discretion</h3><p>Your name, your plans, your requests stay between us. Always.</p></li>
-        <li class="pillar"><h3>Access</h3><p>Doors, tables and places that are never offered — only arranged.</p></li>
-        <li class="pillar"><h3>One Contact</h3><p>One person who knows you, answers you, and handles everything.</p></li>
-        <li class="pillar"><h3>Worldwide</h3><p>Dubai, Bali, Tokyo or home. Wherever you are, so are we.</p></li>
+        <li class="pillar"><h3 data-i18n="discretionTitle">Discretion</h3><p data-i18n="discretionText">Your name, your plans, your requests stay between us. Always.</p></li>
+        <li class="pillar"><h3 data-i18n="accessTitle">Access</h3><p data-i18n="accessText">Doors, tables and places that are never offered — only arranged.</p></li>
+        <li class="pillar"><h3 data-i18n="contactTitle">One Contact</h3><p data-i18n="contactText">One person who knows you, answers you, and handles everything.</p></li>
+        <li class="pillar"><h3 data-i18n="worldwideTitle">Worldwide</h3><p data-i18n="worldwideText">Dubai, Bali, Tokyo or home. Wherever you are, so are we.</p></li>
       </ul>
     </div>
   </section>
 
   <section class="worldwide on-dark">
-    <img src="assets/lyra/world.jpg" loading="lazy" alt="A coastal village lit at dusk">
+    <img src="assets/lyra/world.jpg" loading="lazy" data-i18n-attr="alt:altWorld" alt="A coastal village lit at dusk">
     <div class="inner reveal">
-      <span class="label">Worldwide</span>
-      <h2>Wherever you are.</h2>
-      <p>Dubai · Maldives · Bali · Thailand · Singapore · Japan · Europe</p>
+      <span class="label" data-i18n="worldwideTitle">Worldwide</span>
+      <h2 data-i18n="wherever">Wherever you are.</h2>
+      <p data-i18n="destinations">Dubai · Maldives · Bali · Thailand · Singapore · Japan · Europe</p>
     </div>
   </section>
 
   <section class="section request" id="request">
     <div class="narrow">
       <div class="reveal">
-        <span class="label">Private request</span>
-        <h2>Tell us, in your own words.</h2>
-        <p class="intro">Read personally. Answered discreetly, within the hour.</p>
+        <span class="label" data-i18n="requestLabel">Private request</span>
+        <h2 data-i18n="requestTitle">Tell us, in your own words.</h2>
+        <p class="intro" data-i18n="requestIntro">Read personally. Answered discreetly, within the hour.</p>
       </div>
       <form id="request-form" class="reveal" novalidate>
         <div class="field">
-          <label for="f-name">Your name</label>
+          <label for="f-name" data-i18n="fieldName">Your name</label>
           <input id="f-name" name="name" type="text" autocomplete="name" required>
         </div>
         <div class="field">
-          <label for="f-contact">Email or phone</label>
+          <label for="f-contact" data-i18n="fieldContact">Email or phone</label>
           <input id="f-contact" name="contact" type="text" autocomplete="email" required>
         </div>
         <div class="field">
-          <label for="f-request">Your request</label>
-          <textarea id="f-request" name="request" placeholder="Where, when, for whom — and anything that matters to you." required></textarea>
+          <label for="f-request" data-i18n="fieldRequest">Your request</label>
+          <textarea id="f-request" name="request" data-i18n-attr="placeholder:fieldRequestHint" placeholder="Where, when, for whom — and anything that matters to you." required></textarea>
         </div>
         <div class="field">
-          <label for="f-budget">Budget <small>— optional</small></label>
+          <label for="f-budget" data-i18n-html="fieldBudget">Budget <small>— optional</small></label>
           <input id="f-budget" name="budget" type="text">
         </div>
         <div class="form-foot">
-          <button class="send" type="submit">Send to Lyra</button>
-          <p class="form-note" id="form-note" role="status">Nothing is arranged without your approval.</p>
+          <button class="send" type="submit" data-i18n="send">Send to Lyra</button>
+          <p class="form-note" id="form-note" role="status" data-i18n="formNote">Nothing is arranged without your approval.</p>
         </div>
       </form>
     </div>
@@ -449,6 +472,138 @@
 
 <script>
   const CONCIERGE_EMAIL = 'concierge@lyra-conciergerie.com';
+  const LANGUAGES = ['en', 'fr'];
+  const LANG_STORAGE_KEY = 'lyra-lang';
+
+  // English lives in the HTML (no-JS fallback); French overrides it key by key.
+  const FRENCH = {
+    pageDescription: 'Lyra — conciergerie privée internationale. Une demande, une personne, tout est organisé.',
+    brandLabel: 'Lyra — retour en haut',
+    ctaLong: 'Faire appel à Lyra',
+    ctaShort: 'Demande',
+    heroLabel: 'Conciergerie privée · Partout dans le monde',
+    heroTitle: 'La vie, <em>exceptionnellement</em> orchestrée.',
+    promiseLabel: 'Le service',
+    promiseTitle: 'Une seule demande.<br>Plus rien à y penser.',
+    promiseText: 'Dites-nous ce que vous souhaitez, où, et le budget que vous envisagez. Une seule personne prend le relais — et s’occupe de tout, en toute discrétion.',
+    worldsLabel: 'Nos univers',
+    worldsTitle: 'Cinq univers, une seule main.',
+    travelTitle: 'Voyage',
+    travelText: 'Aviation privée, yachts, villas et hôtels.',
+    diningTitle: 'Table',
+    diningText: 'La bonne table, un chef privé, une bouteille rare.',
+    experiencesTitle: 'Expériences',
+    experiencesText: 'Premières, événements privés, nuits mémorables.',
+    mobilityTitle: 'Mobilité',
+    mobilityText: 'Un chauffeur qui vous attend, dans chaque ville, à toute heure.',
+    privateTitle: 'Vie privée',
+    privateText: 'La maison, le bien-être, le quotidien — pris en charge.',
+    differenceLabel: 'La différence Lyra',
+    differenceTitle: 'Pas un service. Une personne.',
+    discretionTitle: 'Discrétion',
+    discretionText: 'Votre nom, vos projets, vos demandes restent entre nous. Toujours.',
+    accessTitle: 'Accès',
+    accessText: 'Des portes, des tables et des lieux qui ne se réservent pas — ils s’obtiennent.',
+    contactTitle: 'Un seul contact',
+    contactText: 'Une personne qui vous connaît, vous répond et s’occupe de tout.',
+    worldwideTitle: 'Partout dans le monde',
+    worldwideText: 'Dubaï, Bali, Tokyo ou chez vous. Où que vous soyez, nous y sommes.',
+    wherever: 'Où que vous soyez.',
+    destinations: 'Dubaï · Maldives · Bali · Thaïlande · Singapour · Japon · Europe',
+    requestLabel: 'Demande privée',
+    requestTitle: 'Dites-nous, avec vos mots.',
+    requestIntro: 'Lue personnellement. Réponse discrète, dans l’heure.',
+    fieldName: 'Votre nom',
+    fieldContact: 'Email ou téléphone',
+    fieldRequest: 'Votre demande',
+    fieldRequestHint: 'Où, quand, pour qui — et tout ce qui compte pour vous.',
+    fieldBudget: 'Budget <small>— facultatif</small>',
+    send: 'Envoyer à Lyra',
+    formNote: 'Rien n’est organisé sans votre accord.',
+    altHero: 'Une villa éclairée la nuit sur une falaise au-dessus de la mer',
+    altTravel: 'La cabine d’un jet privé',
+    altDining: 'Une table dressée aux chandelles',
+    altExperiences: 'Les loges de velours rouge d’un opéra',
+    altMobility: 'La mascotte sur le capot d’une grande voiture',
+    altPrivate: 'Lumière du matin sur un lit défait',
+    altWorld: 'Un village côtier illuminé au crépuscule',
+  };
+
+  const MESSAGES = {
+    en: {
+      formError: 'Please share your name, a way to reach you, and your request.',
+      formSent: 'Your email app has opened with your request. Send it, and Lyra will answer within the hour.',
+      mailSubject: 'Private request',
+      mailName: 'Name',
+      mailBudget: 'Budget',
+      mailNoBudget: 'not specified',
+    },
+    fr: {
+      formError: 'Merci d’indiquer votre nom, un moyen de vous joindre et votre demande.',
+      formSent: 'Votre messagerie s’est ouverte avec votre demande. Envoyez-la : Lyra vous répond dans l’heure.',
+      mailSubject: 'Demande privée',
+      mailName: 'Nom',
+      mailBudget: 'Budget',
+      mailNoBudget: 'non précisé',
+    },
+  };
+
+  const metaDescription = document.querySelector('meta[name="description"]');
+  const i18nNodes = {
+    text: [...document.querySelectorAll('[data-i18n]')],
+    html: [...document.querySelectorAll('[data-i18n-html]')],
+    attr: [...document.querySelectorAll('[data-i18n-attr]')],
+  };
+  const parseAttrSpec = (el) => el.dataset.i18nAttr.split(';').map((pair) => pair.split(':'));
+  const english = { pageDescription: metaDescription.content };
+  i18nNodes.text.forEach((el) => { english[el.dataset.i18n] = el.textContent; });
+  i18nNodes.html.forEach((el) => { english[el.dataset.i18nHtml] = el.innerHTML; });
+  i18nNodes.attr.forEach((el) => parseAttrSpec(el).forEach(([attr, key]) => { english[key] = el.getAttribute(attr); }));
+  const dictionaries = { en: english, fr: FRENCH };
+
+  let currentLang = 'en';
+
+  const readStoredLang = () => {
+    try { return localStorage.getItem(LANG_STORAGE_KEY); } catch { return null; }
+  };
+  const storeLang = (lang) => {
+    try { localStorage.setItem(LANG_STORAGE_KEY, lang); } catch { /* storage unavailable: the choice lasts for this visit */ }
+  };
+  const detectLang = () => {
+    const fromUrl = new URLSearchParams(location.search).get('lang');
+    if (LANGUAGES.includes(fromUrl)) return fromUrl;
+    const stored = readStoredLang();
+    if (LANGUAGES.includes(stored)) return stored;
+    const browserLangs = navigator.languages?.length ? navigator.languages : [navigator.language || 'en'];
+    const match = browserLangs.map((l) => l.slice(0, 2).toLowerCase()).find((l) => LANGUAGES.includes(l));
+    return match || 'en';
+  };
+
+  const applyLang = (lang) => {
+    const dict = dictionaries[lang];
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    metaDescription.content = dict.pageDescription;
+    i18nNodes.text.forEach((el) => { el.textContent = dict[el.dataset.i18n]; });
+    i18nNodes.html.forEach((el) => { el.innerHTML = dict[el.dataset.i18nHtml]; });
+    i18nNodes.attr.forEach((el) => parseAttrSpec(el).forEach(([attr, key]) => el.setAttribute(attr, dict[key])));
+    document.querySelectorAll('[data-lang]').forEach((btn) => {
+      btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
+    });
+  };
+
+  document.querySelectorAll('[data-lang]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      storeLang(btn.dataset.lang);
+      applyLang(btn.dataset.lang);
+      const url = new URL(location.href);
+      if (url.searchParams.has('lang')) {
+        url.searchParams.set('lang', btn.dataset.lang);
+        history.replaceState(null, '', url);
+      }
+    });
+  });
+  applyLang(detectLang());
 
   const header = document.getElementById('header');
   const hero = document.querySelector('.hero');
@@ -477,25 +632,26 @@
   const note = document.getElementById('form-note');
   form.addEventListener('submit', (event) => {
     event.preventDefault();
+    const t = MESSAGES[currentLang];
     const value = (id) => document.getElementById(id).value.trim();
     const name = value('f-name');
     const contact = value('f-contact');
     const request = value('f-request');
     if (!name || !contact || !request) {
-      note.textContent = 'Please share your name, a way to reach you, and your request.';
+      note.textContent = t.formError;
       note.classList.add('is-error');
       return;
     }
     const body = [
-      `Name: ${name}`,
+      `${t.mailName}: ${name}`,
       `Contact: ${contact}`,
-      `Budget: ${value('f-budget') || 'not specified'}`,
+      `${t.mailBudget}: ${value('f-budget') || t.mailNoBudget}`,
       '',
       request,
     ].join('\n');
-    window.location.href = `mailto:${CONCIERGE_EMAIL}?subject=${encodeURIComponent(`Private request — ${name}`)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:${CONCIERGE_EMAIL}?subject=${encodeURIComponent(`${t.mailSubject} — ${name}`)}&body=${encodeURIComponent(body)}`;
     note.classList.remove('is-error');
-    note.textContent = 'Your email app has opened with your request. Send it, and Lyra will answer within the hour.';
+    note.textContent = t.formSent;
   });
 </script>
 </body>
